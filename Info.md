@@ -15,4 +15,7 @@ Main pop-up screen:
 Settings screen:
 - Ability to set a max history 
 - Grouping clipboards
-- 
+
+
+**Searchable Clipboard History**
+**Organizational Folders** 

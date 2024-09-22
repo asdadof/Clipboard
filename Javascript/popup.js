@@ -1,24 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const resetButton = document.getElementById("resetClipboardHistory");
+    resetButton.addEventListener('click', () => {
+        chrome.runtime.sendMessage({action: "resetClipboardHistory"});
+    });
     const clipboardList = document.getElementById('clipboards');
 
-    // Function to update clipboard items
     function updateClipboardItems() {
-        // Clear the current list
         clipboardList.innerHTML = '';
-
-        // Get clipboard items from the background script
+    
         chrome.runtime.sendMessage({action: "getClipboardItems"}, (response) => {
-            response.items.forEach((item) => {
+            response.items.slice(-10).reverse().forEach((item) => {
                 const li = document.createElement('li');
-                li.textContent = item;
+                
+                const button = document.createElement('button');
+                button.textContent = item;
+                button.classList.add('clipboard-item');
+                button.addEventListener('click', (event) => {
+                    navigator.clipboard.writeText(item);
+                    animateSelection(event.target);
+                });
+                li.appendChild(button);
+    
                 clipboardList.appendChild(li);
             });
         });
     }
 
-    // Initial update
+    function animateSelection(element) {
+        element.classList.add('selected');
+        setTimeout(() => {
+            element.classList.remove('selected');
+        }, 1000);
+    }
+
     updateClipboardItems();
 
-    // Update clipboard items every 5 seconds (adjust as needed)
-    setInterval(updateClipboardItems, 5000);
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+        if (request.action === "updateClipboardItems") {
+            updateClipboardItems();
+        }
+    });
 });

@@ -8,6 +8,5 @@ document.addEventListener('copy', (e) => {
         e.clipboardData.setData('text/plain', selectedText);
         copiedData.text = selectedText;
     }
-    console.log(selectedText);
     chrome.runtime.sendMessage({action: "addToClipboard", text: selectedText});
 });

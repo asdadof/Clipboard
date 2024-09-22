@@ -1,0 +1,22 @@
+#clipboards {
+    list-style-type: none;
+    padding: 0rem;
+}
+
+.clipboard-item {
+    width: 150px;
+    height: 40px;
+    overflow: hidden;
+    padding: 5px 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    background-color: #f0f0f0;
+}
+
+.clipboard-item:hover {
+    background-color: #e0e0e0;
+}
