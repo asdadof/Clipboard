@@ -9,9 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
         clipboardList.innerHTML = '';
     
         chrome.runtime.sendMessage({action: "getClipboardItems"}, (response) => {
+            if (response.items.length === 0) {
+                const li = document.createElement('li');
+                li.textContent = 'No items in clipboard history';
+                clipboardList.appendChild(li);
+                return;
+            }
             response.items.slice(-10).reverse().forEach((item) => {
                 const li = document.createElement('li');
-                
                 const button = document.createElement('button');
                 button.textContent = item;
                 button.classList.add('clipboard-item');
