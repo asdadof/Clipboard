@@ -30,18 +30,17 @@ button {
     color: #ffffff;
     border: none;
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 10px 10px;
     font-size: 14px;
     cursor: pointer;
-    margin:5px;
     width: 100%;
+    margin: 5px 5px 5px 0;
     height: 3em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     text-overflow: ellipsis;
-    text-align: center;
-    white-space: nowrap; 
-    overflow: hidden; 
+    white-space: nowrap;
+    overflow: hidden;
+
 }
 
 
@@ -58,27 +57,7 @@ button:hover {
     overflow-y: auto;
     border: 1px solid #1b263b;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#clipboards {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-#clipboards li {
-    background-color: #1b3a57;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    word-wrap: break-word;
-    color: #b3c5d1;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-}
-
-#clipboards li:hover {
-    background-color: #224b69;
 }
 
 #resetClipboardHistory {
