@@ -1,24 +1,28 @@
 {
-    "manifest_version": 3,
-    "name": "Clipboard Manager",
-    "version": "1.0",
-    "description": "Manages clipboard content across tabs",
-    "permissions": [
-      "storage",
-      "clipboardRead",
-      "clipboardWrite",
-      "tabs"
-    ],
-    "background": {
-     "service_worker": "/Javascript/background.js"
-    },
-    "action": {
-      "default_popup": "/HTML/popup.html"
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["/Javascript/content.js"]
-      }
-    ]
-  }
+  "manifest_version": 3,
+  "name": "Clipboard Manager",
+  "version": "1.0",
+  "description": "Manages clipboard content across tabs",
+  "permissions": [
+    "storage",
+    "clipboardRead",
+    "clipboardWrite",
+    "tabs",
+    "nativeMessaging",
+    "commands"
+  ],
+  "commands": {
+  "background": {
+    "service_worker": "/Javascript/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "/HTML/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["/Javascript/content.js"]
+    }
+  ]
+}
